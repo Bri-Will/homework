@@ -33,8 +33,12 @@ grep "Chicken Burrito" | wc -l
 grep "Steak Burrito" | wc -l
 ```
 
-5. Do chicken burritos more often have black beans or pinto beans?
+5. Chicken burritos more often have black beans (282 times) vs. pinto beans (105 times)
 
+```
+grep "Chicken Burrito" chipotle.tsv |grep "Pinto Beans" | wc -l
+grep "Chicken Burrito" chipotle.tsv |grep "Black Beans" | wc -l
+```
 
 6. Files:
 Airline_on_time_west_coast.csv
