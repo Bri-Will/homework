@@ -24,7 +24,7 @@ How to view HTML code:
 '''
 
 # read the HTML code from a web page and save as a string
-with open('../data/example.html', 'rU') as f:
+with open('./Documents/GIT-Repos/DS-SEA-06/data/example.html', 'rU') as f:
     html = f.read()
 
 # convert HTML into a structured Soup object
@@ -86,16 +86,23 @@ EXERCISE ONE
 '''
 
 # find the 'h2' tag and then print its text
-
+b.find(name='h2').text
 
 # find the 'p' tag with an 'id' value of 'feedback' and then print its text
-
+b.find(name='p', attrs={'id':'feedback'}).text
 
 # find the first 'p' tag and then print the value of the 'id' attribute
+b.find_all(name='p')[0]['id']
 
 # print the text of all four resources displayed on the webpage
+resources = b.find_all(name='li')
+for row in resources:
+    print(row.text)
 
 # print the text of only the API resources
+APIs = b.find(name='ul', attrs={'id':'scraping'}).find_all(name='li')
+for row in APIs:
+    print(row.text)
 
 
 '''
@@ -139,13 +146,13 @@ EXERCISE TWO
 '''
 
 # get the description
-
+b.find(name='meta', attrs={'name':'description'})['content']
 
 # get the content rating
-
+b.find(name='meta', attrs={'itemprop':'contentRating'})['content']
 
 # get the duration in minutes (as an integer)
-
+int(b.find(name='time', attrs={'itemprop':'duration'})['datetime'][2:5])
 
 
 '''
